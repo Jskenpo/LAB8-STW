@@ -4,7 +4,7 @@ import banner from '../imas/banner.jpg';
 import cardImages from './Images/images';
 import parteAtras from '../imas/back.jpg';
 import Card from './Card/card';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function App() {
@@ -32,6 +32,34 @@ function App() {
 
     }
 
+    //COMPARA DOS CARTAS
+    useEffect(() => {
+        if(opUno && opDos){
+            if(opUno.src === opDos.src){
+                setCards(prevCards =>{
+                    return prevCards.map(card => {
+                        if(card.src === opUno.src || card.src === opDos.src){
+                            return {...card, iguales: true}
+                        }else {
+                            return card
+                        }
+                    })
+                })
+                reset()
+            }else {
+                reset()
+            }
+        }
+    }, [opUno, opDos])
+
+
+    const reset = () => {
+        setOpUno(null)
+        setOpDos(null)
+        setEstado(anteriorEstado => anteriorEstado + 1)
+    }
+
+
     return (
         <div className = 'App'>
             <img src= {banner} alt="banner" id ='banner' />
@@ -44,6 +72,7 @@ function App() {
                         key = {card.id} 
                         card={card}
                         controladorClick={controladorClick}
+                        volteado={card === opUno || card === opDos || card.iguales}
                     />
                 ))}
             </div>

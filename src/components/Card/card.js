@@ -5,7 +5,7 @@ import parteAtras from '../../imas/back.jpg';
 
 
 
-function Card({card, controladorClick}) {
+function Card({card, controladorClick, volteado}) {
 
     const controladorClickFunc = () => {
         controladorClick(card)
@@ -14,7 +14,7 @@ function Card({card, controladorClick}) {
 
     return (
         <div className='card' key={card.id}>
-            <div>
+            <div className = {volteado ? 'volteado': ''}>
                 <img className='front' src={card.src} alt='card front' />
                 <img className='back' src={parteAtras} onClick={controladorClickFunc} alt='card back' />
             </div>

@@ -8,14 +8,14 @@ import imagen7 from '../../imas/07.jpg';
 import imagen8 from '../../imas/08.jpg';
 
 const cardImages = [
-    {src: imagen1},
-    {src: imagen2},
-    {src: imagen3},
-    {src: imagen4},
-    {src: imagen5},
-    {src: imagen6},
-    {src: imagen7},
-    {src: imagen8}
+    {src: imagen1 ,iguales:false },
+    {src: imagen2 ,iguales:false},
+    {src: imagen3 ,iguales:false},
+    {src: imagen4 ,iguales:false} ,
+    {src: imagen5 ,iguales:false},
+    {src: imagen6 ,iguales:false},
+    {src: imagen7 ,iguales:false},
+    {src: imagen8 ,iguales:false}
 ];
 
 

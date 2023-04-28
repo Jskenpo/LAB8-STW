@@ -99,6 +99,9 @@ function App() {
                 ))}
             </div>
             <p>intentos: {estado}</p>
+            <br></br>
+            <a href="https://github.com/Jskenpo/LAB8-STW.git">click aquí para repositorio en Github</a>
+            <br></br>
         </div>
     );
 }

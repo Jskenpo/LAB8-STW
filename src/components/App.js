@@ -71,6 +71,14 @@ function App() {
         aleatorio()
     }, [])
 
+    //verificar si gano y reiniciar el juego sabiendo si las cartas iguales:true
+    useEffect(() => {
+        if(cards.filter(card => !card.iguales).length === 0){
+            alert('JUEGO COMPLETADO!!!')
+            aleatorio()
+        }
+    }, [cards])
+    
 
 
     return (

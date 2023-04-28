@@ -7,6 +7,17 @@ import imagen6 from '../../imas/06.jpg';
 import imagen7 from '../../imas/07.jpg';
 import imagen8 from '../../imas/08.jpg';
 
+const cardImages = [
+    {src: imagen1},
+    {src: imagen2},
+    {src: imagen3},
+    {src: imagen4},
+    {src: imagen5},
+    {src: imagen6},
+    {src: imagen7},
+    {src: imagen8}
+];
 
 
-export default [ imagen1, imagen2, imagen3, imagen4, imagen5, imagen6, imagen7, imagen8 ];
+
+export default cardImages;

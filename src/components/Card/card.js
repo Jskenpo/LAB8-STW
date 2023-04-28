@@ -5,10 +5,14 @@ import parteAtras from '../../imas/back.jpg';
 
 
 
-function Card({card, controladorClick, volteado}) {
+function Card({card, controladorClick, volteado, bloqueado}) {
 
     const controladorClickFunc = () => {
-        controladorClick(card)
+        if(!bloqueado){
+            controladorClick(card)
+        }
+
+        
     }
 
 

@@ -15,11 +15,16 @@ function App() {
     const [opUno, setOpUno] = useState(null); //opcion uno
     const [opDos, setOpDos] = useState(null); //opcion dos
 
+    const [bloqueado, setBloqueado] = useState(false); //bloquea las cartas para que no se puedan seleccionar mas de dos
+
     //ALEATORIO
     const aleatorio = () => {
         const mezcla = [...cardImages, ...cardImages]
             .sort(() => Math.random() - 0.5)
             .map((card) => ({ ...card, id: Math.random()}) )
+        
+        setOpUno(null)
+        setOpDos(null)
         setCards(mezcla)
         setEstado(0)
     }
@@ -35,6 +40,7 @@ function App() {
     //COMPARA DOS CARTAS
     useEffect(() => {
         if(opUno && opDos){
+            setBloqueado(true)
             if(opUno.src === opDos.src){
                 setCards(prevCards =>{
                     return prevCards.map(card => {
@@ -47,7 +53,7 @@ function App() {
                 })
                 reset()
             }else {
-                reset()
+                setTimeout(() => reset(), 1000)
             }
         }
     }, [opUno, opDos])
@@ -57,7 +63,14 @@ function App() {
         setOpUno(null)
         setOpDos(null)
         setEstado(anteriorEstado => anteriorEstado + 1)
+        setBloqueado(false)
     }
+
+    //Empezar nuevo juego
+    useEffect(() => {
+        aleatorio()
+    }, [])
+
 
 
     return (
@@ -73,9 +86,11 @@ function App() {
                         card={card}
                         controladorClick={controladorClick}
                         volteado={card === opUno || card === opDos || card.iguales}
+                        bloqueado={bloqueado}
                     />
                 ))}
             </div>
+            <p>intentos: {estado}</p>
         </div>
     );
 }
